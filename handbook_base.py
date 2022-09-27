@@ -20,3 +20,5 @@ def delete_data(id, data):
     with open('handbook.txt', 'w', encoding="utf-8") as file:
         for i in range(len(data)):
             file.write(f'**{data[i]}**\n')
+
+# CSV.
