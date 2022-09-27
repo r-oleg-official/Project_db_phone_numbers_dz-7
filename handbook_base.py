@@ -1,4 +1,6 @@
 from datetime import datetime as dt
+from email import header
+from operator import index
 import hb_functions as f
 
 # Добавление записи:
@@ -22,3 +24,28 @@ def delete_data(id, data):
             file.write(f'**{data[i]}**\n')
 
 # CSV.
+def csv_read(path_file = 'handbook.csv'):
+    with open(path_file, 'r', encoding="utf-8") as csvfile:     
+        data = csvfile.readlines()
+    return data
+
+
+def csv_index_plus(data):
+    'In processes.'
+    # data = csv_read()
+    # If use missed indexes:
+    for i in range(1, len(data)):
+        old_index = data[i].split(';')
+        print(old_index[0])
+        if old_index[0] != i: return i
+        
+        # print(data[i])
+    # return index
+
+
+def csv_find():
+    'In processes'
+    for i in range(1, len(data)):
+            print(data[i])
+
+
