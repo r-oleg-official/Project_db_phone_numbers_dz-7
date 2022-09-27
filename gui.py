@@ -15,3 +15,7 @@ def get_id():
 
 def get_operation():
     return input('operation (new, del, find, exit) = ')
+
+
+def get_path(msg):
+    return input(msg)
