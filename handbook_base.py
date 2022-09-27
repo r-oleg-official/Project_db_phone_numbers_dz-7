@@ -1,16 +1,22 @@
 from datetime import datetime as dt
+import hb_functions as f
 
-def get_storage(data):
+# Добавление записи:
+def add_new_data(data):
     with open('handbook.txt', 'a', encoding="utf-8") as file:
         file.write(f'**{data}**\n')
 
-def get_base():
+# Считывание базы данных из .txt
+def read_base():
     with open('handbook.txt', 'r', encoding="utf-8") as file:     
-        return file.readlines()
+        data = file.readlines()
+    data = [data[i][:-1].split('**') for i in range(len(data))]
+    data = [data[i][1:-1] for i in range(len(data))]
+    return data
 
-        
-def del_data(id, handbook):    
-    handbook = [handbook[i] for i in range(len(handbook)) if handbook[i][1] != id]
-    '**'.join(handbook)
+# Удаление записи из базы данных .txt 
+def delete_data(id, data):    
+    data = ['**'.join(data[i]) for i in range(len(data)) if int(data[i][0]) != int(id)]
     with open('handbook.txt', 'w', encoding="utf-8") as file:
-        file.write(f'**{handbook}**\n')
+        for i in range(len(data)):
+            file.write(f'**{data[i]}**\n')

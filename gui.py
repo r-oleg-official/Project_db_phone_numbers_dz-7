@@ -9,3 +9,6 @@ def get_lname():
 
 def get_phone_num():
     return input('phone number = ')
+
+def get_id():    
+    return input('id = ')
