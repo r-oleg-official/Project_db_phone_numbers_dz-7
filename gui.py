@@ -12,3 +12,6 @@ def get_phone_num():
 
 def get_id():    
     return input('id = ')
+
+def get_operation():
+    return input('operation (new, del, find, exit) = ')
