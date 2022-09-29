@@ -9,3 +9,21 @@ def new_id(handbook):
 def find(lname, handbook):
     lname_list = [handbook[i] for i in range(len(handbook)) if handbook[i][1] == lname]
     return lname_list
+
+
+# CSV.
+
+
+def csv_index_plus(data) -> int:
+    'Find missed index.'
+    for i in range(1, len(data)):
+        old_index = int(data[i].split(";")[0])
+        if old_index != i: break
+    return i
+
+
+def csv_find_to_id(id, data) -> str:
+    "In process. Find element to column by column's name."
+    for i in range(1, len(data)):
+            print(data[i])
+

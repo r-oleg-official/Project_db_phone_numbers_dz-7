@@ -1,6 +1,5 @@
 from datetime import datetime as dt
-from email import header
-from operator import index
+import gui as g
 import hb_functions as f
 
 # Добавление записи:
@@ -24,28 +23,34 @@ def delete_data(id, data):
             file.write(f'**{data[i]}**\n')
 
 # CSV.
-def csv_read(path_file = 'handbook.csv'):
+def create_csv(data, path_file = 'handbook.csv'):
+    'Create a new empty handbook.'
+    with open(path_file, 'w', encoding="utf-8") as file:
+        file.write(data.replace(' ', ';'))
+
+
+def csv_header(data) -> str:
+    return data[0].split(';')
+
+
+def csv_read(path_file = 'handbook.csv') -> str:
     with open(path_file, 'r', encoding="utf-8") as csvfile:     
         data = csvfile.readlines()
     return data
 
+def csv_add(data, path_file = 'handbook.csv') -> str:
+    'In process. Add record by id.'
+    #id = f.csv_index_plus(data)
+    #print(id)
+    with open(path_file, 'w', encoding="utf-8") as file:
+        file.write(f'{csv_header(data)}')
+        file.write(f'{data}')
+    return data
 
-def csv_index_plus(data):
-    'In processes.'
-    # data = csv_read()
-    # If use missed indexes:
+def csv_del_to_id(id, data) -> str:
+    'In process. Delete record by id.'
     for i in range(1, len(data)):
-        old_index = data[i].split(';')
-        print(old_index[0])
-        if old_index[0] != i: return i
-        
-        # print(data[i])
-    # return index
-
-
-def csv_find():
-    'In processes'
-    for i in range(1, len(data)):
-            print(data[i])
-
-
+        old_index = int(data[i].split(";")[0])
+        if old_index != i: break
+    return i
+    
